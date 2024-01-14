@@ -88,25 +88,36 @@ class User
     }
 
     // UPDATE
-//     public function updateEmployee()
-//     {
-//         $this->name = htmlspecialchars(strip_tags($this->name));
-//         $this->email = htmlspecialchars(strip_tags($this->email));
-//         $this->designation = htmlspecialchars(strip_tags($this->designation));
-//         $this->created = htmlspecialchars(strip_tags($this->created));
-//         $this->id = htmlspecialchars(strip_tags($this->id));
+    public function updateUser()
+    {
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->user = htmlspecialchars(strip_tags($this->user));
+        $this->verify = htmlspecialchars(strip_tags($this->verify));
+        $this->email = htmlspecialchars(strip_tags($this->email));
+        $this->facebook = htmlspecialchars(strip_tags($this->facebook));
+        $this->instagram = htmlspecialchars(strip_tags($this->instagram));
+        $this->twitch = htmlspecialchars(strip_tags($this->twitch));
+        $this->website = htmlspecialchars(strip_tags($this->website));
+        $this->description = htmlspecialchars(strip_tags($this->description));
 
-//         $sqlQuery = "UPDATE " . $this->db_table . " SET name = '" . $this->name . "',
-// email = '" . $this->email . "',
-// designation = '" . $this->designation . "',created = '" . $this->created . "'
-// WHERE id = " . $this->id;
+        $sqlQuery = "UPDATE " . $this->db_table . " SET 
+            name = '" . $this->name . "',
+            user = '" . $this->user . "',
+            verify = " . $this->verify . ",
+            email = '" . $this->email . "',
+            facebook = '" . $this->facebook . "',
+            instagram = '" . $this->instagram . "',
+            twitch = '" . $this->twitch . "',
+            website = '" . $this->website . "',
+            description = '" . $this->description . "'
+            WHERE id = " . $this->id;
 
-//         $this->db->query($sqlQuery);
-//         if ($this->db->affected_rows > 0) {
-//             return true;
-//         }
-//         return false;
-//     }
+        $this->db->query($sqlQuery);
+        if ($this->db->affected_rows > 0) {
+            return true;
+        }
+        return false;
+    }
 
     // DELETE
     function deleteUser()

@@ -7,11 +7,14 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include_once '../../database.php';
 include_once '../../queries/short.php';
+
 $database = new Database();
 $db = $database->getConnection();
+
 $item = new Short($db);
 $item->id = isset($_GET['id']) ? $_GET['id'] : die();
 $item->getSingleShort();
+
 if ($item->name != null) {
     
     // create array

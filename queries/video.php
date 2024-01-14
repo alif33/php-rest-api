@@ -90,25 +90,36 @@ class Video
     }
 
     // UPDATE
-//     public function updateEmployee()
-//     {
-//         $this->name = htmlspecialchars(strip_tags($this->name));
-//         $this->email = htmlspecialchars(strip_tags($this->email));
-//         $this->designation = htmlspecialchars(strip_tags($this->designation));
-//         $this->created = htmlspecialchars(strip_tags($this->created));
-//         $this->id = htmlspecialchars(strip_tags($this->id));
+    public function updateVideo()
+    {
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->description = htmlspecialchars(strip_tags($this->description));
+        $this->code = htmlspecialchars(strip_tags($this->code));
+        $this->categories = json_encode($this->categories);
+        $this->date_publication = htmlspecialchars(strip_tags($this->date_publication));
+        $this->duration = intval($this->duration);
+        $this->views_number = intval($this->views_number);
+        $this->score = intval($this->score);
+        $this->subtitle = htmlspecialchars(strip_tags($this->subtitle));
 
-//         $sqlQuery = "UPDATE " . $this->db_table . " SET name = '" . $this->name . "',
-// email = '" . $this->email . "',
-// designation = '" . $this->designation . "',created = '" . $this->created . "'
-// WHERE id = " . $this->id;
+        $sqlQuery = "UPDATE " . $this->db_table . " SET 
+            name = '" . $this->name . "',
+            description = '" . $this->description . "',
+            code = '" . $this->code . "',
+            categories = '" . $this->categories . "',
+            date_publication = '" . $this->date_publication . "',
+            duration = " . $this->duration . ",
+            views_number = " . $this->views_number . ",
+            score = " . $this->score . ",
+            subtitle = '" . $this->subtitle . "'
+            WHERE id = " . $this->id;
 
-//         $this->db->query($sqlQuery);
-//         if ($this->db->affected_rows > 0) {
-//             return true;
-//         }
-//         return false;
-//     }
+        $this->db->query($sqlQuery);
+        if ($this->db->affected_rows > 0) {
+            return true;
+        }
+        return false;
+    }
 
     // DELETE
     function deleteVideo()
